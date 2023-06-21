@@ -3,6 +3,8 @@ import './App.css';
 import Form from './components/Formulario/Formulario';
 import Header from './components/Header/Header';
 import Org from './components/Org/Org';
+import Members from './components/Members/Member';
+import Groups from './components/Groups/Groups';
 function App() {
   //Hooks
   const [collaborators, setCollaborators] = useState([]);
@@ -23,7 +25,7 @@ function App() {
     {
       titulo: "Data Science",
       colorPrimario: '#a6d157',
-      colorSecundario: '#f0f8e21',
+      colorSecundario: '#f0f8e2',
     }
     ,
     {
@@ -65,6 +67,9 @@ function App() {
       {show && <Form equipos={equipos.map((equipo) => equipo.titulo)}
       collaborator={registerCollaborator}/>}
       <Org show={showForm}/>
+      {equipos.map((equipo) => {
+      return <Groups members={equipo} key={equipos.titulo}
+      collaborator={collaborators}/>})}
     </>
   )
 }
