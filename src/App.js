@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import './App.css';
 import Form from './components/Formulario/Formulario';
 import Header from './components/Header/Header';
+import Org from './components/Org/Org';
 function App() {
+  //Hooks
+  const [collaborators, setCollaborators] = useState([]);
+  const [show, setShow] = useState(true);
+
   const equipos = [
     {
       titulo: "Programacion",
@@ -44,10 +50,21 @@ function App() {
       colorSecundario: '#ffeedf',
     }
   ]
+  //funcion colaboradores
+  const registerCollaborator = (collaborator) => {
+    setCollaborators([...collaborators, collaborator])
+  }
+
+  //funtion show
+  const showForm = () => {
+    setShow(!show);
+  }
   return (
     <>
       <Header/>
-      <Form equipos={equipos.map((equipo) => equipo.titulo)}/>
+      {show && <Form equipos={equipos.map((equipo) => equipo.titulo)}
+      collaborator={registerCollaborator}/>}
+      <Org show={showForm}/>
     </>
   )
 }
