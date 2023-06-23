@@ -1,11 +1,14 @@
 import "./Members-style/Members.css";
-
+import {AiFillDelete} from "react-icons/ai";
 const Members = (props) => {
-    const {name, puesto} = props.data
+    
+    const {name, puesto, photo, id} = props.data
+    const {primaryColor, deleteCollaborator} = props;
     return(
         <div className="members">
-            <div className="head">
-                <img src="https://github.com/helterdev.png" alt="photo" />
+            <AiFillDelete className="delete" onClick={() => deleteCollaborator(id)}/>
+            <div className="head" style={{backgroundColor: primaryColor}}>
+                <img src={photo} alt="perfil-usuario" />
             </div>
             <div className="info">
                 <h4>{name}</h4>

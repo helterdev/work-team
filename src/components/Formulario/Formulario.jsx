@@ -3,6 +3,7 @@ import Inputs from "../Inputs/Inputs";
 import { useState } from "react";
 import OptionList from "../OptionList/OptionList";
 import Boton from "../Boton/Boton";
+import { v4 as uuid } from "uuid";
 const Form = (props) => {
     // console.log(props.equipos);
     const {collaborator} = props
@@ -18,9 +19,11 @@ const Form = (props) => {
             name,
             puesto,
             photo,
-            equipo
+            equipo,
+            id: uuid()
         }
         collaborator(data);
+        
     }
     return(
         <section className="form">

@@ -4,15 +4,18 @@ import "./Groups-style/Groups.css";
 const Groups = (props) =>{
     const {titulo, colorSecundario, colorPrimario} = props.members
     const {collaborator} = props
-     console.log(collaborator);
+    //  console.log(collaborator.length);
     return(
-        <section className="groups" style={{background: colorSecundario}}>
-            <h3 style={{color: colorPrimario}}>{titulo}</h3>
-            <div className="members">
-                {collaborator.map((collaborator, index) => <Members data={collaborator}
-                key={index}/>)}
-            </div>
-        </section>
+        <> {collaborator.length > 0 &&
+            <section className="groups" style={{background: colorSecundario}}>
+                <h3 style={{color: colorPrimario}}>{titulo}</h3>
+                <div className="members">
+                    {collaborator.map((collaborator, index) => <Members data={collaborator}
+                    key={index} primaryColor={colorPrimario}
+                    deleteCollaborator={props.deleteCollaborator}/>)}
+                </div>
+            </section>}
+        </>
     )
 }
 

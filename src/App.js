@@ -3,7 +3,6 @@ import './App.css';
 import Form from './components/Formulario/Formulario';
 import Header from './components/Header/Header';
 import Org from './components/Org/Org';
-import Members from './components/Members/Member';
 import Groups from './components/Groups/Groups';
 function App() {
   //Hooks
@@ -61,15 +60,24 @@ function App() {
   const showForm = () => {
     setShow(!show);
   }
+
+  //funtion delete collaborator
+  const deleteCollaborator = (id) => {
+    const newCollaborators = collaborators.filter(collaborator => collaborator.id !== id );
+    setCollaborators(newCollaborators)
+    
+  }
   return (
     <>
       <Header/>
       {show && <Form equipos={equipos.map((equipo) => equipo.titulo)}
       collaborator={registerCollaborator}/>}
       <Org show={showForm}/>
-      {equipos.map((equipo) => {
-      return <Groups members={equipo} key={equipos.titulo}
-      collaborator={collaborators}/>})}
+      {equipos.map((equipo) => { 
+      return <Groups members={equipo} 
+      key={equipo.titulo}
+      collaborator={collaborators.filter(collaborator => collaborator.equipo === equipo.titulo)}
+      deleteCollaborator={deleteCollaborator}/>})}
     </>
   )
 }
