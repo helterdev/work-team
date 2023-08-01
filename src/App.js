@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import Form from './components/Formulario/Formulario';
 import Header from './components/Header/Header';
 import Org from './components/Org/Org';
@@ -51,12 +50,12 @@ function App() {
       colorSecundario: '#ffeedf',
     }
   ]
-  //funcion colaboradores
+  //funtion collaborators
   const registerCollaborator = (collaborator) => {
     setCollaborators([...collaborators, collaborator])
   }
 
-  //funtion show
+  //funtion show form
   const showForm = () => {
     setShow(!show);
   }
